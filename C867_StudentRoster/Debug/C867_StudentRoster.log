@@ -1,0 +1,11 @@
+﻿  roster.cpp
+c:\users\hanna\source\repos\c867_studentroster\roster.cpp(33): error C3867: 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::length': non-standard syntax; use '&' to create a pointer to member
+c:\users\hanna\source\repos\c867_studentroster\roster.cpp(37): error C3867: 'std::vector<std::string,std::allocator<_Ty>>::at': non-standard syntax; use '&' to create a pointer to member
+          with
+          [
+              _Ty=std::string
+          ]
+c:\users\hanna\source\repos\c867_studentroster\roster.cpp(37): error C2109: subscript requires array or pointer type
+  student.cpp
+  Generating Code...
+c:\users\hanna\source\repos\c867_studentroster\student.cpp(75): error C4716: 'Student::getDegreeProgram': must return a value
