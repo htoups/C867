@@ -1,5 +1,7 @@
 #include "roster.h"
 #include <vector>
+#include <iostream>
+#include<string>
 #include "student.h"
 #include "degree.h"
 #include "networkStudent.h"
@@ -10,47 +12,48 @@ using namespace std;
 
 Roster::Roster() {
 
-	int studentRosterLength = studentData.length;
-	Student* classRosterArray[5] = {};
+	int studentRosterLength = studentData.size();
+	
 
-	for (int i = 0; i < studentRosterLength; ++i) {
-		string currentStudent = studentData[i];
-		
+	for (int i = 0; i < studentRosterLength; ++i)
+	{
+		string currentStudent = studentData.at(i);
+
 		//for loop
-		string::size_type k = 0;
-		string::size_type j = currentStudent.find(",");
 
-		vector<string>* studentDataVect;
+		vector<string> studentDataVect;
 
+		int start = 0;
+		int end = currentStudent.find(',');
 
-		//splits up lines of student data at comma delimiter
-		while (j != string::npos) {
-			studentDataVect->push_back(currentStudent.substr(k, j - 1));
-			k = ++j;
-			j = currentStudent.find(",", j);
+		while (end != string::npos)
+		{
+			studentDataVect.push_back(currentStudent.substr(start, end - start));
+			start = ++end;
+			end = currentStudent.find(',', start);
 
-			if (j == string::npos) {
-				studentDataVect->push_back(currentStudent.substr(k, currentStudent.length));
+			if (end == string::npos) {
+				studentDataVect.push_back(currentStudent.substr(start, currentStudent.length()));
 			}
 		}
 
-		switch (studentDataVect->at[studentDataVect->size()-1])
+		//switch (studentDataVect.at(studentDataVect.size()-1) replacement
+		string tempStudentData = studentDataVect.at(studentDataVect.size() - 1);
 
+		if (tempStudentData == "NETWORKING")
 		{
-		case NETWORKING: 
-			classRosterArray[i] = new NetworkStudent(studentDataVect);
-			break;
-		case SECURITY:
-			classRosterArray[i] = new SecurityStudent(studentDataVect);
-			break;
-		case SOFTWARE:
-			classRosterArray[i] = new SoftwareStudent(studentDataVect);
-			break;
-
-	default:
-		break;
-
+			classRosterList.push_back(new NetworkStudent(&studentDataVect));
+		} else if (tempStudentData == "SECURITY")
+		{
+			classRosterList.push_back(new SecurityStudent(&studentDataVect));
+		} else if (tempStudentData == "SOFTWARE")
+		{
+			classRosterList.push_back(new SoftwareStudent(&studentDataVect));
+		} else
+		{
+			cout << "BROKEN";
 		}
+
 	}
 
 
