@@ -11,6 +11,7 @@ private:
 public:
 	Degree getDegreeType() const;
 	SoftwareStudent(vector <string>* studentDataVect);
+	void printStudentData();
 };
 
 #endif 

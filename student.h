@@ -38,7 +38,7 @@ public:
 
 	Student(vector <string>* studentDataVect); //constructor
 
-	virtual void printStudentData(string studentID); //virtual print for specific student data
+	virtual void printStudentData(); //virtual print for specific student data
 
 	~Student(); //deleting strings?
 

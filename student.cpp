@@ -68,18 +68,14 @@ string Student::getDaysToCompleteThree() const {
 	return daysToCompleteThree;
 }
 
-void Student::printStudentData(string studentID) {
+void Student::printStudentData() {
 }
 
 string Student::getDegreeProgram() {
+	return "";
 }
 
 
 Student::~Student() {
 	//delete student objects?
 }
-
-
-//Degree Types in Subclasses only??
-
-//string Student::
